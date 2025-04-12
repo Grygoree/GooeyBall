@@ -1,0 +1,121 @@
+<html>
+    <head>
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="position: absolute; left: -9999px;">
+            <defs>
+              <filter id="goo-filter">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+                <feBlend in="SourceGraphic" in2="goo" />
+              </filter>
+            </defs>
+        </svg>
+        <style>
+            body {
+                background-color: #54414E;
+
+                font-family: 'Comic Sans MS', cursive, sans-serif;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                margin: 0;
+            }
+
+            .page-wrapper {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            h1 {
+                color: #B7C8B5
+            }
+
+            @keyframes pulse {
+                0% {
+                    transform: scale(1);
+                    opacity: 0.8;
+                }
+                100% {
+                    transform: scale(1.1);
+                    opacity: 1;
+                }
+            }
+
+            .instruction {
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+                color: #A790A5;
+                animation: pulse 1.5s infinite alternate;
+            }
+
+            .grid {
+
+                display: grid;
+                grid-template-columns: repeat(3, 50px);
+                grid-template-rows: repeat(3, 50px);
+                gap: 5px;
+                filter: url(#goo-filter);
+            }
+
+            .ball {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                width: 50px;
+                height: 50px;
+                background:#C5EBC3;
+                transition: transform 0.5s ease ;
+                border-radius: 100%;
+                
+                color: #A790A5;
+            }
+
+            @keyframes orbit {
+                0% {
+                    transform: rotate(0deg) translateX(15px) rotate(0deg);
+                }
+                100% {
+                    transform: rotate(360deg) translateX(15px) rotate(-360deg);
+                }
+            }
+
+            .orbit-wrapper{
+                width: 50px;
+                height: 50px;
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .orbit-wrapper:hover .ball {
+                animation: orbit 1s linear infinite;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="page-wrapper">
+            <h1>Gooey Ball Demo</h1>
+            <div class="instruction">
+                Hover over the balls to see the magic!
+            </div>
+            <div class="grid">
+                <div class="orbit-wrapper"><div class="ball">🍆</div></div>
+                <div class="orbit-wrapper"><div class="ball">🟣</div></div>
+                <div class="orbit-wrapper"><div class="ball">🍇</div></div>
+
+                <div class="orbit-wrapper"><div class="ball">🔮</div></div>
+                <div class="orbit-wrapper"><div class="ball">Wow!</div></div>
+                <div class="orbit-wrapper"><div class="ball">🍀</div></div>
+
+                <div class="orbit-wrapper"><div class="ball">🐍</div></div>
+                <div class="orbit-wrapper"><div class="ball">👾</div></div>
+                <div class="orbit-wrapper"><div class="ball">🥦</div></div>
+            </div>
+        </div>
+    </body>
+</html>
